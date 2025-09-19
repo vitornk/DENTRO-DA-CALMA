@@ -1,256 +1,238 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dentro da Calma — eBook Ansiedade</title>
-  <style>
-    :root {
-  --bg: #f9fbff;         /* fundo azul claro */
-  --text: #1a2b3c;
-  --muted: #6d7c8a;
-
-  --blue-light: #d6ebff; 
-  --green-light: #d4f8e8;
-  --lavender: #e8e0ff;
-  --accent: #7b5eea;     /* lavanda forte */
-  --accent-dark: #5a3dd3;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dentro da Calma — eBook Ansiedade</title>
+<meta name="description" content="Aprenda a superar a ansiedade com práticas simples e reais. Ebook 'Dentro da Calma' oferece técnicas eficazes para recuperar sua paz interior.">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+:root{
+  --bg:#f0f4f8;        /* fundo azul suave */
+  --text:#1c1e21;      /* texto principal */
+  --muted:#6e7a88;     /* texto secundário */
+  --blue-light:#b2d8f7;
+  --green-light:#c8f0e7;
+  --lavender:#e4e0f7;
+  --accent:#7c6efc;
+  --accent-dark:#5d4de0;
+  --transition:0.4s;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+a{text-decoration:none;transition:var(--transition);}
+.container{max-width:1100px;margin:0 auto;padding:20px;}
 
 /* HEADER */
-.site-header {
-  position: sticky;
-  top: 0;
-  background: linear-gradient(90deg, var(--blue-light), var(--lavender), var(--green-light));
-  border-bottom: 2px solid var(--accent);
-  z-index: 1000;
+header.site-header{
+  position:sticky;
+  top:0;
+  background:linear-gradient(90deg,var(--blue-light),var(--lavender),var(--green-light));
+  border-bottom:2px solid var(--accent);
+  z-index:1000;
+  padding:15px 0;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
-.site-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-nav a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: bold;
-}
-nav a:hover { color: var(--accent); }
-.btn-nav {
-  background: var(--accent);
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 6px;
-}
-.btn-nav:hover { background: var(--accent-dark); }
+header .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.8rem;font-weight:800;color:var(--accent);letter-spacing:1px;}
+nav{display:flex;gap:20px;align-items:center;}
+nav a{color:var(--text);font-weight:600;position:relative;}
+nav a:hover{color:var(--accent);}
+nav a::after{content:'';position:absolute;width:0;height:2px;bottom:-4px;left:0;background:var(--accent);transition:width 0.3s;}
+nav a:hover::after{width:100%;}
+nav a.active{color:var(--accent);font-weight:700;}
+.btn-nav{background:var(--accent);color:#fff;padding:10px 18px;border-radius:8px;}
+.btn-nav:hover{background:var(--accent-dark);}
 
-/* HERO */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 70vh;
-  background: linear-gradient(180deg, var(--blue-light), #fff);
+/* HAMBURGER MOBILE */
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger div{width:25px;height:3px;background:var(--accent);transition:0.3s;}
+
+/* HERO COM PARTICULAS */
+.hero{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height:80vh;
+  padding:40px 20px;
+  background:linear-gradient(180deg,var(--blue-light),#fff);
+  overflow:hidden;
 }
-.hero h2 {
-  font-size: 2rem;
-  margin: 0;
-  color: var(--accent);
-}
-.hero p { color: var(--muted); max-width: 600px; margin: 20px auto; }
+.hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%; z-index:0;}
+.hero .container{position:relative; z-index:1;}
+.hero h2{font-size:2.6rem;margin-bottom:25px;color:var(--accent);animation:fadeInDown 1s ease;}
+.hero p{color:var(--muted);max-width:650px;margin:0 auto 30px;font-size:1.1rem;animation:fadeIn 1.2s ease;}
 
 /* BUTTONS */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-.btn:hover { background: var(--accent-dark); }
-.btn.big { font-size: 1.2rem; padding: 14px 28px; }
+.btn{display:inline-block;margin-top:10px;padding:14px 32px;background:var(--accent);color:#fff;border-radius:12px;font-weight:700;font-size:1.1rem;transition:var(--transition);box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.btn:hover{background:var(--accent-dark);transform:translateY(-3px) scale(1.05);box-shadow:0 6px 18px rgba(0,0,0,0.15);}
 
 /* SECTIONS */
-.section { padding: 60px 20px; }
-.section h3 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--accent);
-}
-.section.alt { background: var(--lavender); }
+section{padding:80px 20px;opacity:0;transform:translateY(25px);transition:0.8s ease;}
+section.visible{opacity:1;transform:translateY(0);}
+.section h3{text-align:center;margin-bottom:50px;color:var(--accent);font-size:2rem;}
+.section.alt{background:var(--lavender);}
 
 /* GRID CARDS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 20px;
-}
-.card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-  transition: transform .2s;
-}
-.card:hover { transform: translateY(-6px); }
-.card h4 { margin-top: 0; color: var(--accent-dark); }
-.card.small { text-align: center; font-weight: 600; }
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+.card{background:#fff;padding:28px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s;text-align:center;}
+.card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 18px 35px rgba(0,0,0,0.15);}
+.card h4{margin-top:0;color:var(--accent-dark);font-size:1.3rem;}
+.card p{color:var(--muted);font-size:1rem;margin-top:10px;}
+.card.small{font-weight:600;font-size:1rem;padding:18px;transition:transform 0.3s;}
+.card.small:hover{transform:scale(1.02);}
 
 /* ABOUT */
-.about {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: center;
-}
-.about-text { flex: 1; }
-.about-img img {
-  max-width: 280px;
-  border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-}
+.about-text-only{max-width:800px;margin:0 auto;text-align:center;}
+.about-text-only p{font-size:1.05rem;color:var(--muted);}
 
 /* CTA FINAL */
-.cta {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(90deg, var(--green-light), var(--lavender));
-}
-.cta h2 { margin: 0; color: var(--accent-dark); }
-.cta p { color: var(--muted); margin: 15px 0; }
+.cta{text-align:center;padding:100px 20px;background:linear-gradient(120deg,var(--green-light),var(--lavender));}
+.cta h2{margin-bottom:20px;font-size:2.2rem;color:var(--accent-dark);}
+.cta p{color:var(--muted);font-size:1.1rem;margin-bottom:25px;}
 
 /* FOOTER */
-.site-footer {
-  background: var(--lavender);
-  text-align: center;
-  padding: 20px;
-  color: var(--text);
-}
+.site-footer{background:var(--lavender);text-align:center;padding:25px;color:var(--text);font-size:0.95rem;}
 
 /* RESPONSIVIDADE */
-@media (max-width: 768px) {
-  nav { display: none; } /* simplificar menu em mobile */
-  .hero h2 { font-size: 1.6rem; }
+@media(max-width:768px){
+  nav{display:none;flex-direction:column;position:absolute;top:100%;right:0;background:#fff;width:200px;border-left:1px solid #ccc;border-bottom-left-radius:8px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
+  nav.show{display:flex;}
+  .hamburger{display:flex;}
+  .hero h2{font-size:2rem;}
+  .hero p{font-size:1rem;}
 }
 
-  </style>
+/* ANIMAÇÕES */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+</style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">Dentro da Calma</h1>
-      <nav>
-        <a href="#beneficios">Benefícios</a>
-        <a href="#sumario">Sumário</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#comprar" class="btn-nav">Comprar</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="container hero-content">
-      <h2>Como eu saí do ciclo da ansiedade</h2>
-      <p>Descubra práticas simples e reais para recuperar sua paz interior. Um guia prático para transformar sua relação com a ansiedade.</p>
-      <a href="#comprar" class="btn big">Quero meu eBook</a>
-    </div>
-  </section>
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">Dentro da Calma</h1>
+    <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+    <nav id="menu">
+      <a href="#beneficios">Benefícios</a>
+      <a href="#sumario">Sumário</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#comprar" class="btn-nav">Comprar</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- BENEFÍCIOS -->
-  <section id="beneficios" class="section">
-    <div class="container">
-      <h3>O que você vai aprender</h3>
-      <div class="grid">
-        <div class="card">
-          <h4>Respiração como âncora</h4>
-          <p>Técnicas simples para trazer sua mente de volta ao presente.</p>
-        </div>
-        <div class="card">
-          <h4>Pequenas pausas</h4>
-          <p>Como 1 minuto pode transformar seu dia e reduzir a ansiedade.</p>
-        </div>
-        <div class="card">
-          <h4>Pensamentos não são comandos</h4>
-          <p>Aprenda a observar sua mente sem se prender aos pensamentos.</p>
-        </div>
-        <div class="card">
-          <h4>Um dia de cada vez</h4>
-          <p>A verdadeira constância no processo de cura emocional.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="hero" class="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="container hero-content">
+    <h2>Como eu saí do ciclo da ansiedade</h2>
+    <p>Descubra práticas simples e reais para recuperar sua paz interior. Um guia prático para transformar sua relação com a ansiedade.</p>
+    <a href="https://pagamento.exemplo/checkout" target="_blank" class="btn big">Quero meu eBook</a>
+  </div>
+</section>
 
-  <!-- SUMÁRIO -->
-  <section id="sumario" class="section alt">
-    <div class="container">
-      <h3>Sumário do eBook</h3>
-      <div class="grid">
-        <div class="card small">Quando a ansiedade vira rotina</div>
-        <div class="card small">O corpo fala primeiro</div>
-        <div class="card small">Pequenas pausas, grandes começos</div>
-        <div class="card small">A respiração como âncora</div>
-        <div class="card small">Pensamentos não são comandos</div>
-        <div class="card small">Um dia de cada vez</div>
-        <div class="card small">Silenciar não é fugir</div>
-        <div class="card small">Redescobrindo o que me acalma</div>
-        <div class="card small">E se eu falhar no processo?</div>
-        <div class="card small">Conclusão: Dentro da calma</div>
-      </div>
+<section id="beneficios" class="section">
+  <div class="container">
+    <h3>O que você vai aprender</h3>
+    <div class="grid">
+      <div class="card"><h4>Respiração como âncora</h4><p>Técnicas simples para trazer sua mente de volta ao presente.</p></div>
+      <div class="card"><h4>Pequenas pausas</h4><p>Como 1 minuto pode transformar seu dia e reduzir a ansiedade.</p></div>
+      <div class="card"><h4>Pensamentos não são comandos</h4><p>Aprenda a observar sua mente sem se prender aos pensamentos.</p></div>
+      <div class="card"><h4>Um dia de cada vez</h4><p>A verdadeira constância no processo de cura emocional.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="section">
-    <div class="container about-text-only">
-      <h3>Sobre o autor</h3>
-      <p>Depois de anos vivendo no automático e sofrendo com ansiedade, decidi compartilhar minha jornada real de superação. 
-         Este eBook não promete milagres, mas traz ferramentas práticas que realmente funcionaram para mim.</p>
+<section id="sumario" class="section alt">
+  <div class="container">
+    <h3>Sumário do eBook</h3>
+    <div class="grid">
+      <div class="card small">Quando a ansiedade vira rotina</div>
+      <div class="card small">O corpo fala primeiro</div>
+      <div class="card small">Pequenas pausas, grandes começos</div>
+      <div class="card small">A respiração como âncora</div>
+      <div class="card small">Pensamentos não são comandos</div>
+      <div class="card small">Um dia de cada vez</div>
+      <div class="card small">Silenciar não é fugir</div>
+      <div class="card small">Redescobrindo o que me acalma</div>
+      <div class="card small">E se eu falhar no processo?</div>
+      <div class="card small">Conclusão: Dentro da calma</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA FINAL -->
-  <section id="comprar" class="cta">
-    <div class="container">
-      <h2>Pronto para transformar sua relação com a ansiedade?</h2>
-      <p>Garanta agora seu exemplar e comece hoje mesmo a praticar a calma.</p>
-      <a href="https://pagamento.exemplo/checkout" target="_blank" class="btn big">Comprar Agora</a>
-    </div>
-  </section>
+<section id="sobre" class="section">
+  <div class="container about-text-only">
+    <h3>Sobre o autor</h3>
+    <p>Depois de anos vivendo no automático e sofrendo com ansiedade, decidi compartilhar minha jornada real de superação. 
+       Este eBook não promete milagres, mas traz ferramentas práticas que realmente funcionaram para mim.</p>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <p>© 2025 Dentro da Calma — Todos os direitos reservados</p>
-  </footer>
+<section id="comprar" class="cta">
+  <div class="container">
+    <h2>Pronto para transformar sua relação com a ansiedade?</h2>
+    <p>Garanta agora seu exemplar e comece hoje mesmo a praticar a calma.</p>
+    <a href="https://pagamento.exemplo/checkout" target="_blank" class="btn big">Comprar Agora</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Dentro da Calma — Todos os direitos reservados</p>
+</footer>
+
+<script>
+// Fade-in seções
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});},{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
+
+// Hamburger menu
+const hamburger=document.getElementById('hamburger');
+const menu=document.getElementById('menu');
+hamburger.addEventListener('click',()=>menu.classList.toggle('show'));
+
+// Scrollspy menu
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let fromTop=window.scrollY+100;
+  navLinks.forEach(link=>{
+    const section=document.querySelector(link.hash);
+    if(section.offsetTop<=fromTop && section.offsetTop+section.offsetHeight>fromTop){
+      link.classList.add('active');
+    }else{link.classList.remove('active');}
+  });
+});
+
+// Partículas hero
+const canvas=document.getElementById('heroCanvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<120;i++){
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(124,110,252,0.2)';
+    ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x>canvas.width)p.x=0; if(p.x<0)p.x=canvas.width;
+    if(p.y>canvas.height)p.y=0; if(p.y<0)p.y=canvas.height;
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+</script>
+
 </body>
 </html>
