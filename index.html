@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dentro da Calma — eBook Ansiedade</title>
+  <style>
+    :root {
+  --bg: #f9fbff;         /* fundo azul claro */
+  --text: #1a2b3c;
+  --muted: #6d7c8a;
+
+  --blue-light: #d6ebff; 
+  --green-light: #d4f8e8;
+  --lavender: #e8e0ff;
+  --accent: #7b5eea;     /* lavanda forte */
+  --accent-dark: #5a3dd3;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(90deg, var(--blue-light), var(--lavender), var(--green-light));
+  border-bottom: 2px solid var(--accent);
+  z-index: 1000;
+}
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+}
+nav a:hover { color: var(--accent); }
+.btn-nav {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.btn-nav:hover { background: var(--accent-dark); }
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh;
+  background: linear-gradient(180deg, var(--blue-light), #fff);
+}
+.hero h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--accent);
+}
+.hero p { color: var(--muted); max-width: 600px; margin: 20px auto; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn.big { font-size: 1.2rem; padding: 14px 28px; }
+
+/* SECTIONS */
+.section { padding: 60px 20px; }
+.section h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+.section.alt { background: var(--lavender); }
+
+/* GRID CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 20px;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-6px); }
+.card h4 { margin-top: 0; color: var(--accent-dark); }
+.card.small { text-align: center; font-weight: 600; }
+
+/* ABOUT */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+.about-text { flex: 1; }
+.about-img img {
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* CTA FINAL */
+.cta {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(90deg, var(--green-light), var(--lavender));
+}
+.cta h2 { margin: 0; color: var(--accent-dark); }
+.cta p { color: var(--muted); margin: 15px 0; }
+
+/* FOOTER */
+.site-footer {
+  background: var(--lavender);
+  text-align: center;
+  padding: 20px;
+  color: var(--text);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  nav { display: none; } /* simplificar menu em mobile */
+  .hero h2 { font-size: 1.6rem; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Dentro da Calma</h1>
+      <nav>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#sumario">Sumário</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#comprar" class="btn-nav">Comprar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <h2>Como eu saí do ciclo da ansiedade</h2>
+      <p>Descubra práticas simples e reais para recuperar sua paz interior. Um guia prático para transformar sua relação com a ansiedade.</p>
+      <a href="#comprar" class="btn big">Quero meu eBook</a>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" class="section">
+    <div class="container">
+      <h3>O que você vai aprender</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Respiração como âncora</h4>
+          <p>Técnicas simples para trazer sua mente de volta ao presente.</p>
+        </div>
+        <div class="card">
+          <h4>Pequenas pausas</h4>
+          <p>Como 1 minuto pode transformar seu dia e reduzir a ansiedade.</p>
+        </div>
+        <div class="card">
+          <h4>Pensamentos não são comandos</h4>
+          <p>Aprenda a observar sua mente sem se prender aos pensamentos.</p>
+        </div>
+        <div class="card">
+          <h4>Um dia de cada vez</h4>
+          <p>A verdadeira constância no processo de cura emocional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMÁRIO -->
+  <section id="sumario" class="section alt">
+    <div class="container">
+      <h3>Sumário do eBook</h3>
+      <div class="grid">
+        <div class="card small">Quando a ansiedade vira rotina</div>
+        <div class="card small">O corpo fala primeiro</div>
+        <div class="card small">Pequenas pausas, grandes começos</div>
+        <div class="card small">A respiração como âncora</div>
+        <div class="card small">Pensamentos não são comandos</div>
+        <div class="card small">Um dia de cada vez</div>
+        <div class="card small">Silenciar não é fugir</div>
+        <div class="card small">Redescobrindo o que me acalma</div>
+        <div class="card small">E se eu falhar no processo?</div>
+        <div class="card small">Conclusão: Dentro da calma</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section">
+    <div class="container about-text-only">
+      <h3>Sobre o autor</h3>
+      <p>Depois de anos vivendo no automático e sofrendo com ansiedade, decidi compartilhar minha jornada real de superação. 
+         Este eBook não promete milagres, mas traz ferramentas práticas que realmente funcionaram para mim.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="comprar" class="cta">
+    <div class="container">
+      <h2>Pronto para transformar sua relação com a ansiedade?</h2>
+      <p>Garanta agora seu exemplar e comece hoje mesmo a praticar a calma.</p>
+      <a href="https://pagamento.exemplo/checkout" target="_blank" class="btn big">Comprar Agora</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Dentro da Calma — Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
