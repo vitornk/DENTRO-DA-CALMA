@@ -8,9 +8,9 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
 :root{
-  --bg:#f0f4f8;        /* fundo azul suave */
-  --text:#1c1e21;      /* texto principal */
-  --muted:#6e7a88;     /* texto secundário */
+  --bg:#f0f4f8;
+  --text:#1c1e21;
+  --muted:#6e7a88;
   --blue-light:#b2d8f7;
   --green-light:#c8f0e7;
   --lavender:#e4e0f7;
@@ -35,9 +35,9 @@ header.site-header{
   padding:15px 0;
   box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
-header .container{display:flex;justify-content:space-between;align-items:center;}
+header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
 .logo{font-size:1.8rem;font-weight:800;color:var(--accent);letter-spacing:1px;}
-nav{display:flex;gap:20px;align-items:center;}
+nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
 nav a{color:var(--text);font-weight:600;position:relative;}
 nav a:hover{color:var(--accent);}
 nav a::after{content:'';position:absolute;width:0;height:2px;bottom:-4px;left:0;background:var(--accent);transition:width 0.3s;}
@@ -90,6 +90,11 @@ section.visible{opacity:1;transform:translateY(0);}
 .about-text-only{max-width:800px;margin:0 auto;text-align:center;}
 .about-text-only p{font-size:1.05rem;color:var(--muted);}
 
+/* FEEDBACKS */
+.feedbacks .card{padding:25px;font-style:italic;}
+.feedbacks .card h4{margin-bottom:10px;font-weight:700;font-style:normal;color:var(--accent-dark);}
+.feedbacks .card p{font-style:italic;color:var(--muted);}
+
 /* CTA FINAL */
 .cta{text-align:center;padding:100px 20px;background:linear-gradient(120deg,var(--green-light),var(--lavender));}
 .cta h2{margin-bottom:20px;font-size:2.2rem;color:var(--accent-dark);}
@@ -99,17 +104,37 @@ section.visible{opacity:1;transform:translateY(0);}
 .site-footer{background:var(--lavender);text-align:center;padding:25px;color:var(--text);font-size:0.95rem;}
 
 /* RESPONSIVIDADE */
-@media(max-width:768px){
-  nav{display:none;flex-direction:column;position:absolute;top:100%;right:0;background:#fff;width:200px;border-left:1px solid #ccc;border-bottom-left-radius:8px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
-  nav.show{display:flex;}
-  .hamburger{display:flex;}
-  .hero h2{font-size:2rem;}
+@media(max-width:1024px){
+  .hero h2{font-size:2.2rem;}
   .hero p{font-size:1rem;}
+  .cta h2{font-size:1.8rem;}
+  .cta p{font-size:1rem;}
 }
 
-/* ANIMAÇÕES */
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){
+  nav{display:none;flex-direction:column;position:absolute;top:100%;right:0;background:#fff;width:100%;border-left:0;border-bottom-left-radius:0;box-shadow:0 6px 15px rgba(0,0,0,0.1);padding:10px;}
+  nav.show{display:flex;}
+  .hamburger{display:flex;}
+  .hero h2{font-size:1.8rem;}
+  .hero p{font-size:0.95rem;}
+  .cta h2{font-size:1.6rem;}
+  .cta p{font-size:0.95rem;}
+  .grid{grid-template-columns:1fr;gap:15px;}
+  .card{padding:20px;}
+  .feedbacks .card{padding:20px;}
+}
+
+@media(max-width:480px){
+  header .container{flex-direction:column;gap:10px;}
+  .hero h2{font-size:1.6rem;}
+  .hero p{font-size:0.9rem;}
+  .cta h2{font-size:1.4rem;}
+  .cta p{font-size:0.9rem;}
+  .btn{padding:12px 24px;font-size:1rem;}
+  .card h4{font-size:1.2rem;}
+  .card p{font-size:0.95rem;}
+  .about-text-only p{font-size:0.95rem;}
+}
 </style>
 </head>
 <body>
@@ -120,7 +145,7 @@ section.visible{opacity:1;transform:translateY(0);}
     <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
     <nav id="menu">
       <a href="#beneficios">Benefícios</a>
-      <a href="#sumario">Sumário</a>
+      <a href="#feedbacks">Feedback</a>
       <a href="#sobre">Sobre</a>
       <a href="#comprar" class="btn-nav">Comprar</a>
     </nav>
@@ -129,10 +154,17 @@ section.visible{opacity:1;transform:translateY(0);}
 
 <section id="hero" class="hero">
   <canvas class="hero-canvas" id="heroCanvas"></canvas>
-  <div class="container hero-content">
-    <h2>Como eu saí do ciclo da ansiedade</h2>
-    <p>Descubra práticas simples e reais para recuperar sua paz interior. Um guia prático para transformar sua relação com a ansiedade.</p>
-    <a href="https://pagamento.exemplo/checkout" target="_blank" class="btn big">Quero meu eBook</a>
+  <div class="container hero-content" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 40px;">
+    
+    <!-- IMAGEM DO EBOOK -->
+    <img src="img/ebook-capa.png" alt="Capa do ebook Dentro da Calma" style="width: 100%; max-width: 350px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+
+    <!-- TEXTO PRINCIPAL -->
+    <div class="hero-text" style="max-width: 500px; text-align: left;">
+      <h2>Como eu saí do ciclo da ansiedade</h2>
+      <p>Descubra práticas simples e reais para recuperar sua paz interior. Um guia prático para transformar sua relação com a ansiedade.</p>
+      <a href="#comprar" class="btn big">Quero meu eBook</a>
+    </div>
   </div>
 </section>
 
@@ -148,20 +180,22 @@ section.visible{opacity:1;transform:translateY(0);}
   </div>
 </section>
 
-<section id="sumario" class="section alt">
+<section id="feedbacks" class="section alt feedbacks">
   <div class="container">
-    <h3>Sumário do eBook</h3>
+    <h3>Feedback</h3>
     <div class="grid">
-      <div class="card small">Quando a ansiedade vira rotina</div>
-      <div class="card small">O corpo fala primeiro</div>
-      <div class="card small">Pequenas pausas, grandes começos</div>
-      <div class="card small">A respiração como âncora</div>
-      <div class="card small">Pensamentos não são comandos</div>
-      <div class="card small">Um dia de cada vez</div>
-      <div class="card small">Silenciar não é fugir</div>
-      <div class="card small">Redescobrindo o que me acalma</div>
-      <div class="card small">E se eu falhar no processo?</div>
-      <div class="card small">Conclusão: Dentro da calma</div>
+      <div class="card">
+        <h4>Juliana Rocha, 41 anos</h4>
+        <p>“Eu achava que só remédio poderia me ajudar, mas esse método me mostrou outra realidade. Hoje me sinto mais calma, confiante e no controle da minha vida.”</p>
+      </div>
+      <div class="card">
+        <h4>Marcos Silva, 28 anos</h4>
+        <p>“Minha rotina era sufocante, e a ansiedade me atrapalhava no trabalho e na vida pessoal. Segui o passo a passo simples e percebi mudanças logo nos primeiros dias. Recomendo demais!”</p>
+      </div>
+      <div class="card">
+        <h4>Ana Paula, 32 anos</h4>
+        <p>“Eu já tinha tentado de tudo, mas nada funcionava de verdade. Em poucas semanas aplicando as técnicas do ebook, finalmente consegui controlar minha ansiedade e dormir melhor. Foi libertador!”</p>
+      </div>
     </div>
   </div>
 </section>
